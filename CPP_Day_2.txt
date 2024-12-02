@@ -1,0 +1,557 @@
+
+~~~~~~~~~~~~~~~ AUTO KEYWORD~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+    
+    auto x = 5;
+    auto y = 5.6f;
+    
+    auto c = 's';
+    auto ptr = &x;
+    
+    cout<<x<<" "<<y<<" "<<c<<" "<<ptr<<endl;   
+}
+
+
+~~~~~~~~~~~~~~ POINTERS ~~~~~~~~~~~~~~~~~~~~~~~~
+
+Q-What are Pointers ,uses and example?
+=> Pointers are a fundamental feature of the C++ programming language, allowing for low-level memory access and manipulation.
+ A pointer is a variable that stores the memory address of another variable, function, or even another pointer.
+
+Example:
+   int x = 10;
+    
+    int * ptr ;
+    
+    ptr = & x;
+    
+    cout<<"*ptr= "<<*ptr<<endl;
+    
+    cout<< "&x ="<<long(&x)<<endl;
+    
+    cout<<"&ptr="<<long(&ptr)<<endl;
+ 
+**************
+    int a =100;
+    
+    int * b;
+    int **c;
+    
+    b = &a;
+    c=&b;
+    
+    cout<<**c<<endl;
+
+----------------------------------------------------------------------------
+
+void swap(int *x,int *y)
+{
+    int z = *x;
+    
+    *x = *y;
+    *y = z;
+
+}
+
+
+int main()
+{
+    
+int a = 10,b=20;
+
+cout<<"Before:"<<a<<" "<<b<<endl;
+
+swap(&a,&b);
+
+cout<<"After: "<<a<<" "<<b<<endl;
+
+}
+------------------------------------------------------------------------
+Structure in CPP:
+struct Rectangle{
+    int width,height;
+};
+
+int main()
+{
+    struct Rectangle rec;
+    rec.height=10;
+    rec.width=8;
+    cout<<"Area of Rectangle is "<<rec.height * rec.width<<endl;
+}
+--------------------------------------------------------------------------
+@ Single Inheritance:
+class Account{
+    public:
+        float salary = 40000;
+};
+
+class Programmer : public Account{
+    public:
+    float bonus = 50000;
+};
+
+
+int main()
+{
+    Programmer p;
+    cout<<p.salary<<" "<<p.bonus<<endl;
+    
+}
+
+@ Multiple Inheritance
+
+#include <iostream>
+using namespace std;
+
+class Shape{
+    protected:
+        int height;
+        int width;
+        
+    public:
+        void setwidth(int w)
+        {
+            width = w;
+        }
+        void setheight(int h)
+        {
+            height =h;
+        }
+};
+
+class Paint{
+    public:
+        int getcost(int area)
+        {
+            return area * 70;
+        }
+};
+
+class Rectangle: public Shape , public Paint{
+    public:
+        int getarea()
+        {
+            return (width * height);
+        }
+};
+
+int main()
+{
+    Rectangle rec;
+    
+    rec.setwidth(6);
+    rec.setheight(10);
+    
+    cout<<"Area of rectangle is "<<rec.getarea()<<endl;
+    
+    cout<<"Cost of Painting is "<<rec.getcost(rec.getarea())<<"rs.";
+    
+}
+
+@ Multilevel Inheritance:
+
+#include <iostream>
+using namespace std;
+
+class Vehicle{
+    public:
+        void display()
+        {
+        cout<<"This is a Vehicle"<<endl;}
+
+    
+};
+
+class RoyalEnfield : public Vehicle{
+    public:
+        void wheels()
+        {
+            cout<<"This Vehicle has 2 Wheels"<<endl;
+        }
+};
+
+class Creta : public Vehicle{
+    public:
+        void type()
+        {
+            cout<<"This is a Sedan Class Vehicle"<<endl;
+        }
+};
+
+int main()
+{
+    Creta cr;
+    cr.type();
+    cr.display();
+    
+    RoyalEnfield re;
+    re.wheels();
+
+}
+
+@Hierarchical Inheritance:
+ Hybrid
+#include <iostream> 
+using namespace std; 
+
+
+class shape { 
+public: 
+	string name; 
+	int sides; 
+
+	shape(string name, int sides) 
+	{ 
+		this->name = name; 
+		this->sides = sides; 
+	} 
+}; 
+
+class triangle : public shape 
+{ 
+
+private: 
+	int base; 
+	int height; 
+
+public: 
+
+	triangle(string name, int sides, int base, int height) : shape(name, sides) 
+
+	{ 
+		this->base = base; 
+		this->height = height; 
+	} 
+
+	void area() 
+	{ 
+		cout << "area of triangle: "
+			<< (0.5 * base * height) << endl; 
+	} 
+	void details() 
+	{ 
+		cout << "shape is: " << name << endl; 
+		cout << "no. of sides are: " << sides << endl; 
+		cout << "base is: " << base << endl; 
+		cout << "height is: " << height << endl; 
+		area(); 
+	} 
+}; 
+
+ 
+class square : public shape { 
+private: 
+	int height; 
+
+public: 
+	square(string name, int sides, int height) : shape(name, sides) 
+	{ 
+		this->height = height; 
+	} 
+
+	void area() 
+	{ 
+		cout << "area of square: " << (height * height) 
+			<< endl; 
+	} 
+
+	void details() 
+	{ 
+		cout << "shape is: " << name << endl; 
+		cout << "no. of sides are: " << sides << endl; 
+		cout << "height is: " << height << endl; 
+		area(); 
+	} 
+}; 
+
+int main() 
+{ 
+	triangle t("triangle", 3, 2, 3); 
+	square s("square", 4, 2); 
+
+	t.details(); 
+	cout << endl << endl; 
+
+	s.details(); 
+	return 0; 
+}
+
+@ Hybrid Inheritance:
+#include <iostream>  
+using namespace std;  
+class vehicle  
+{  
+public:  
+vehicle()  
+    {  
+cout<< "This is a vehicle\n";  
+    }  
+};  
+class Car: public vehicle  
+{  
+public:  
+Car()  
+    {  
+cout<< "This is a car\n";  
+    }  
+};  
+class Racing  
+{  
+public:  
+Racing()  
+    {  
+cout<< "This is for Racing\n";  
+    }  
+};  
+class Ferrari: public Car, public Racing  
+{  
+public:  
+Ferrari()  
+    {  
+cout<< "Ferrari is a Racing Car\n";  
+    }  
+  
+};  
+int main() {  
+    Ferrari f;  
+    return 0;  
+}  
+
+
+
+Q-Calculate the area of square,rect,triangle,oval using switch case:
+=>
+#include <iostream>
+
+using  namespace std;
+ 
+int main()
+
+{
+
+    int num1,num2,choice;
+    
+    cout<<"Choose the Shape's Area to be calculated:"<<endl;
+
+    cout<<"1.Square"<<endl;
+
+    cout<<"2.Rectangle"<<endl;
+
+    cout<<"3.Circle"<<endl;
+
+    cout<<"4.Triangle"<<endl;
+    
+    cout<<"5.Oval"<<endl;
+
+    cin>> choice;
+
+    switch (choice)
+
+    {
+
+    case 1:
+        cout<<"Enter the Side of Square:";
+        cin>>num1;
+
+        cout<<"Area of "<<" Square with side "<<num1 <<" is "<<num1*num1;
+
+    break;
+
+    case 2:
+        cout<<"Enter Width of Rectangle: ";
+        cin>>num1;
+        cout<<"Enter Height of Rectangle: ";
+        cin>>num2;
+
+        cout<<"Area of Rectangle with width"<< num1<<" and "<<" height "<<num2  <<" is "<<num1*num2;
+
+    break;
+
+    case 3:
+        cout<<"Enter the radius of Circle: ";
+        cin>>num1;
+        cout<<"Area of Circle with radius"<< num1<<" is "<<3.142*num1*num1;
+
+    break;
+
+    case 4:
+        
+        cout<<"Enter the Base of Triangle: ";
+        cin>>num1;
+        cout<<"Enter the Height of Triangle: ";
+        cin>>num2;
+
+    cout<<"Area of Triangle with base "<< num1<<" and Height " <<num2<<" is " <<0.5*num1*num2;
+
+    break;
+    
+    
+    case 5:
+        
+        cout<<"Enter Major axis: ";
+        cin>>num1;
+        cout<<"Enter the Minor axis: ";
+        cin>>num2;
+
+    cout<<"Area of Oval with Major Axis "<< num1<<" and Minor Axis " <<num2<<" is " <<3.142*num1*num2;
+    break;
+
+    default:
+
+    cout<<"Enter Correct Option";
+
+    break;
+
+}
+
+    return 0;
+}
+ 
+---------------------------------------------------------------------------------------------------------
+@ Armstrong Numbers in given range
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    
+    int lower,upper,i,temp1,temp2,rem,num =0;
+    float sum=0.0;
+    
+    cout<<"Enter Lower Range:";
+    cin>>lower;
+    
+    cout<<"Enter Upper Range:";
+    cin>>upper;
+    
+    cout<<"Amstrong Number between "<<lower<<" and "<< upper<<" are: "<<endl;
+    
+    for ( int i = lower;i<upper;i++)
+    {
+        temp1 = i;
+        temp2 = i;
+        
+        while (temp1 !=0){
+            temp1 /= 10;
+            num++;
+        }
+        
+        // calculate number of Digits
+        
+        while(temp2 !=0)
+        {
+            rem = temp2 % 10;
+            sum += pow(rem,num);
+            temp2 /=10;
+        }
+        
+        if((int)sum == i)
+        {
+            cout<<i<<endl;
+        }
+        
+        num=0;
+        sum=0;
+
+    }
+       
+}
+----------------------------------------------------------------------------------------------------
+@ Check Entered string is Palindrone or not
+=>
+#include <iostream>
+using namespace std;
+
+bool check(string s)
+{
+    int i=0,j=s.size()-1;
+    
+    while (i<j){
+        if (s[i] != s[j])
+        {
+            return false;
+        }
+        else{
+            i++;j--;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    string s;
+    
+    cout<<"Enter a string: ";
+    cin>>s;
+    
+    if(check(s))
+    {
+        cout<<"String "<<s<<" is Palindrome";
+    }
+    else{
+        cout<<"Strong "<<s<<" is not a Palindrome";
+    }
+    
+}
+
+----------------------------------------------------------------------------------------
+CONTAINERS:
+1) Vectors:
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int> v;
+    v.push_back(20);
+        v.push_back(40);    
+        v.push_back(33);
+        v.push_back(67);
+        v.pop_back();
+        
+        cout<<v.size()<<endl;
+        for (int i =0;i<v.size();i++){
+        cout<<v[i]<<" ";}
+        
+        sort(v.begin(),v.end());
+        cout<<"\n";
+        
+        for (int i =0;i<v.size();i++){
+        cout<<v[i]<<" ";}
+        
+}
+
+2) Deque:
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    deque<int> v;
+    v.push_back(20);
+        v.push_front(40);    
+        v.push_back(33);
+        v.push_front(67);
+        
+        cout<<v.size()<<endl;
+        for (int i =0;i<v.size();i++){
+        cout<<v[i]<<" ";}
+        
+        cout<<"\n"<<endl;
+        cout<<"v.at(2):"<<v.at(2);
+          cout << "\nv.front() : " << v.front();
+           cout << "\nv.back() : " << v.back();
+ 
+}
+
+3) Map:

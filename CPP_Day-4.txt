@@ -1,0 +1,15 @@
+Q- Errors in CPP
+Q - Macros in CPP:
+#include <iostream>
+using namespace std;
+
+#define AREA(l,b) (l*b)
+
+int main()
+{
+    int l=15 ,b=10,area;
+    
+    area = AREA(l,b);
+    cout<<"Area of rectangle is "<<area<<endl;
+    
+}
